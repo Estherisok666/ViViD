@@ -14,9 +14,18 @@ from src.models.unet_2d_condition import UNet2DConditionModel
 from src.models.unet_3d import UNet3DConditionModel
 from src.pipelines.pipeline_pose2vid_long import Pose2VideoPipeline
 from src.utils.util import get_fps, read_frames, save_videos_grid
-
+# 函数定义 def parse_args()
 def parse_args():
+    #创建ArgumentParser对象
     parser = argparse.ArgumentParser()
+    #添加参数add_argument()
+    “”“
+    包括参数名称、类型、默认值、帮助信息等
+    数据类型：
+    str: 单引号（'）、双引号（"）或三重引号（''' 或 """）定义,一般表示数据
+    int:整数（适合索引、计数）
+    float:包含小数部分的数字（连续的数值和测量结果）
+    “”“
     parser.add_argument("--config",type=str,default="./configs/prompts/test.yaml")
     parser.add_argument("-W", type=int, default=384)
     parser.add_argument("-H", type=int, default=512)
@@ -26,6 +35,7 @@ def parse_args():
     parser.add_argument("--cfg", type=float, default=3.5)
     parser.add_argument("--steps", type=int, default=20)
     parser.add_argument("--fps", type=int)
+    #参数解析
     args = parser.parse_args()
 
     return args
